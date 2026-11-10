@@ -20,19 +20,12 @@ python -m unittest -v
 단위 테스트는 이미지를 Mock으로 대체하여 시간 분할 독립성, 양끝 반사, 속도, 14프레임과 방향별 그리기, 정확히 10개 객체 등록 및 정리를 검사한다. 실제 이미지 로딩과 렌더링은 별도의 SDL smoke 실행으로 확인한다.
 
 
-## Final submission verification (2026-11-10)
+## 제출 검증 안내 (2026-11-10)
 
-Run `python -m compileall -q .`, `python -m unittest -v`, and
-`python verify_submission.py` from the project directory.
-All three checks passed: four unit tests, plus 60 real SDL update/render
-frames with exactly ten birds, all 14 animation indices, both flight
-directions, onscreen bounds and shutdown cleanup. The validation script
-also checks required Git-tracked files and the original image blob hash
-`8c19f4108af91c6497c332d408a756e83b52d5ef`.
-No prolonged visual inspection was performed.
+프로젝트 폴더에서 `python -m compileall -q .`와 `python -m unittest -v`를 실행하면 문법 검사와 단위 테스트를 수행한다. 단위 테스트는 이미지와 그리기 함수를 Mock으로 대체하므로 실제 화면의 시각적 품질을 검증하지 않는다.
 
-The initial implementation was already committed and pushed as one commit
-before the request for five development commits arrived. Its history is
-preserved. Later commits contain actual validation and documentation work;
-they do not reconstruct the five original development stages. The minimum
-five-stage development-history requirement remains unmet.
+`python verify_submission.py`는 필수 파일의 Git 등록 여부와 원본 이미지의 Git blob 해시 `8c19f4108af91c6497c332d408a756e83b52d5ef`를 확인하고, SDL 창에서 60회의 업데이트·렌더링을 자동 실행한다. 객체 10개, 14개 프레임 인덱스, 양방향 상태, 화면 내부 좌표와 종료 정리를 코드로 검사한다. 이 자동 실행 결과는 사용자가 직접 새의 움직임을 보고 확인한 GUI 검증 결과와 구분한다. 사용자의 육안 확인 여부는 확인되지 않았으며, 수동 GUI 테스트를 통과했다고 기록하지 않는다.
+
+이번 마무리 작업에서 실제로 다시 수행한 검사와 결과, 검증 범위의 한계는 `TEST_REPORT.md`에 기록한다.
+
+최초 구현 커밋 `f859c8e`와 기존 이력을 보존한다. 이후 커밋은 실제 검증 코드와 문서 변경을 기록하며, 과거의 개발 단계를 재구성하지 않는다. 커밋 수가 늘더라도 최초 구현을 다섯 단계로 나누어 개발한 이력이 생기는 것은 아니다.
