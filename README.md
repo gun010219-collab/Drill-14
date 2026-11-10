@@ -19,4 +19,20 @@ python -m unittest -v
 
 단위 테스트는 이미지를 Mock으로 대체하여 시간 분할 독립성, 양끝 반사, 속도, 14프레임과 방향별 그리기, 정확히 10개 객체 등록 및 정리를 검사한다. 실제 이미지 로딩과 렌더링은 별도의 SDL smoke 실행으로 확인한다.
 
-?? ???? ?? ??? ?? ??? 4?? ????. ?? SDL ???? ?? PNG ??, ????? ???????? 30?, ?? ? ?? ??? ????. ??? ?? ??? ???? ???. SDL dummy ??????? ???? ??? ?? ?? ??? ????.
+
+## Final submission verification (2026-11-10)
+
+Run `python -m compileall -q .`, `python -m unittest -v`, and
+`python verify_submission.py` from the project directory.
+All three checks passed: four unit tests, plus 60 real SDL update/render
+frames with exactly ten birds, all 14 animation indices, both flight
+directions, onscreen bounds and shutdown cleanup. The validation script
+also checks required Git-tracked files and the original image blob hash
+`8c19f4108af91c6497c332d408a756e83b52d5ef`.
+No prolonged visual inspection was performed.
+
+The initial implementation was already committed and pushed as one commit
+before the request for five development commits arrived. Its history is
+preserved. Later commits contain actual validation and documentation work;
+they do not reconstruct the five original development stages. The minimum
+five-stage development-history requirement remains unmet.
